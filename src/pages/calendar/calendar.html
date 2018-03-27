@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> {{ viewTitle }}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addEvent()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Trainingskalender</h3>
+  <ng-template #template let-view="view" let-row="row" let-col="col">
+    <div>{{view.dates[row*7+col].label}}</div>
+  </ng-template>
+  <ng-template #detail let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
+    <div class='eventReservations'>{{selectedDate.events.length
+      < 1 ? '' : selectedDate.events.length + ' / 12'}} </div>
+        <ng-template ngFor let-event [ngForOf]="selectedDate.events">
+        </ng-template>
+        <ng-template ngFor let-event [ngForOf]="selectedDate.events">
+          <li>{{ event.title }} </li>
+        </ng-template>
+  </ng-template>
+
+  <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate
+   " (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" [monthviewEventDetailTemplate]="detail
+   " [monthviewDisplayEventTemplate]="template" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
+  </calendar>
+
+</ion-content>

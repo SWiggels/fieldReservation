@@ -1,6 +1,12 @@
 # Built application files
 *.apk
 *.ap_
+*.sourcemaps
+*.editorconfig
+node_modules/
+platforms/
+plugins/
+www/
 
 # Files for the ART/Dalvik VM
 *.dex
