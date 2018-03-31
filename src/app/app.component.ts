@@ -3,7 +3,6 @@ import { Component, ViewChild } from '@angular/core';
 import { Platform, MenuController, Nav } from 'ionic-angular';
 
 import { CalendarPage } from '../pages/calendar/calendar';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -13,10 +12,11 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   templateUrl: 'app.html'
 })
 export class MyApp {
+  rootPage: any = 'LoginPage';
+
   @ViewChild(Nav) nav: Nav;
 
   // make HelloIonicPage the root (or first) page
-  rootPage = CalendarPage;
   pages: Array<{ title: string, component: any }>;
 
   constructor(
@@ -30,7 +30,7 @@ export class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Beachvolley Zofingen', component: CalendarPage },
-      { title: 'My First List', component: ListPage }
+      { title: 'second menu entry', component: CalendarPage }
     ];
   }
 

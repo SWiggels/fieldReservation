@@ -4,20 +4,17 @@ import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { MyApp } from './app.component';
 
 import { CalendarPage } from '../pages/calendar/calendar';
-import { ItemDetailsPage } from '../pages/item-details/item-details';
-import { ListPage } from '../pages/list/list';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { NgCalendarModule } from 'ionic2-calendar';
+import { AuthService } from '../providers/auth-service/auth-service';
 
 @NgModule({
   declarations: [
     MyApp,
-    CalendarPage,
-    ItemDetailsPage,
-    ListPage
+    CalendarPage
   ],
   imports: [
     BrowserModule,
@@ -26,15 +23,13 @@ import { NgCalendarModule } from 'ionic2-calendar';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp,
-    CalendarPage,
-    ItemDetailsPage,
-    ListPage
+    MyApp
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    AuthService
   ]
 })
 export class AppModule { }
