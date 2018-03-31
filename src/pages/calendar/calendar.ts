@@ -42,6 +42,10 @@ export class CalendarPage {
     });
   }
 
+  onCurrentDateChanged(event) {
+    this.updateColor();
+  }
+
   onViewTitleChanged(title) {
     this.viewTitle = title;
   }
@@ -62,25 +66,14 @@ export class CalendarPage {
     this.selectedDay = ev.selectedTime;
   }
 
-  getCounter(date: any) {
-    if (date.events) {
-      if (date.events.length > 0) {
-        date.label = date.events.length;
+  updateColor() {
+    $("td").find(".reservationsCount").each(function () {
+      if ($(this).text() == 1) {
+        $(this).parents("td").css("background-color", "yellow", "!important")
       }
-    }
-  }
-
-  changeColor(count: any) {
-    switch (count) {
-      case 0: {
-        $('.monthview-selected').attr('style', 'background-color:black !important');
+      if ($(this).text() == 2) {
+        $(this).parents("td").css("background-color", "black", "!important")
       }
-      case 1: {
-        $('.monthview-selected').attr('style', 'background-color:blue !important');
-      }
-      default: {
-        $('.monthview-selected').attr('style', 'background-color:yellow !important');
-      }
-    }
+    });
   }
 }

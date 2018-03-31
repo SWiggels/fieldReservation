@@ -16,6 +16,8 @@
   <h3>Trainingskalender</h3>
   <ng-template #template let-view="view" let-row="row" let-col="col">
     <div>{{view.dates[row*7+col].label}}</div>
+    <div class="reservationsCount">{{view.dates[row*7+col].events.length}}</div>
+
   </ng-template>
   <ng-template #detail let-showEventDetail="showEventDetail" let-selectedDate="selectedDate" let-noEventsLabel="noEventsLabel">
     <div class='eventReservations'>{{selectedDate.events.length
@@ -29,7 +31,8 @@
 
   <calendar [eventSource]="eventSource" [calendarMode]="calendar.mode" [currentDate]="calendar.currentDate
    " (onEventSelected)="onEventSelected($event)" (onTitleChanged)="onViewTitleChanged($event)" [monthviewEventDetailTemplate]="detail
-   " [monthviewDisplayEventTemplate]="template" (onTimeSelected)="onTimeSelected($event)" step="30" class="calendar">
+   " [monthviewDisplayEventTemplate]="template" (onTimeSelected)="onTimeSelected($event)" (onCurrentDateChanged)="onCurrentDateChanged($event)"
+    step="30" class="calendar">
   </calendar>
 
 </ion-content>
