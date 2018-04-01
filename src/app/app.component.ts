@@ -6,6 +6,7 @@ import { CalendarPage } from '../pages/calendar/calendar';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from '../providers/auth-service/auth-service';
 
 
 @Component({
@@ -23,6 +24,7 @@ export class MyApp {
     public platform: Platform,
     public menu: MenuController,
     public statusBar: StatusBar,
+    private auth: AuthService,
     public splashScreen: SplashScreen
   ) {
     this.initializeApp();
@@ -48,5 +50,9 @@ export class MyApp {
     this.menu.close();
     // navigate to the new page if it is not the current page
     this.nav.setRoot(page.component);
+  }
+
+  getUsername(): string {
+    return this.auth.getUsername();
   }
 }

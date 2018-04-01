@@ -46,6 +46,14 @@ export class AuthService {
     return this.currentUser;
   }
 
+  public getUsername(): string {
+    if (this.currentUser) {
+      return this.currentUser.name;
+    } else {
+      return ''
+    }
+  }
+
   public logout() {
     return Observable.create(observer => {
       this.currentUser = null;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 import * as moment from 'moment';
+import { AuthService } from '../../providers/auth-service/auth-service';
 
 @IonicPage()
 @Component({
@@ -9,14 +10,18 @@ import * as moment from 'moment';
 })
 export class EventModalPage {
 
-  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), title: '' };
+  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), name: '' };
   minDate = new Date().toISOString();
 
-  constructor(public navCtrl: NavController, private navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, public viewCtrl: ViewController, private auth: AuthService) {
     let preselectedDate = moment(this.navParams.get('selectedDay')).format();
     this.event.startTime = preselectedDate;
     this.event.endTime = preselectedDate;
-    this.event.title = this.navParams.get('title');
+    this.event.name = this.getUsername();
+  }
+
+  getUsername(): string {
+    return this.auth.getUsername();
   }
 
   cancel() {

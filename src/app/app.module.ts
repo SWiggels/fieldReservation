@@ -23,7 +23,8 @@ import { AuthService } from '../providers/auth-service/auth-service';
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    MyApp
+    MyApp,
+    CalendarPage
   ],
   providers: [
     StatusBar,

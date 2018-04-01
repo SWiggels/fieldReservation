@@ -41,7 +41,7 @@ export class CalendarPage {
     modal.onDidDismiss(data => {
       if (data) {
         let eventData = data;
-        eventData.title = data.title;
+        eventData.name = data.name;
         eventData.startTime = new Date(data.startTime);
         eventData.endTime = new Date(data.endTime);
         let events = this.eventSource;

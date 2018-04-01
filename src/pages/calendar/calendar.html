@@ -4,7 +4,6 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title> {{ viewTitle }}</ion-title>
-    <ion-label> {{ username }} </ion-label>
     <ion-buttons end>
       <button ion-button icon-only (click)="addEvent()">
         <ion-icon name="add"></ion-icon>
@@ -26,7 +25,7 @@
         <ng-template ngFor let-event [ngForOf]="selectedDate.events">
         </ng-template>
         <ng-template ngFor let-event [ngForOf]="selectedDate.events">
-          <li>{{ event.title }} </li>
+          <li>{{ event.name }} </li>
         </ng-template>
   </ng-template>
 
